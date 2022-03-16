@@ -39,4 +39,5 @@ int main(){
     printf("Digite uma string: \n");
     gets(stringteste);
     ehPalindromo(stringteste);
+    return 0;
 }
