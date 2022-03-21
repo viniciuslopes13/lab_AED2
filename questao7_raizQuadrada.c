@@ -16,15 +16,14 @@ float raiz(int x, float x0, float e){
         return x0;
     }else{
         float expressao = ((x0*x0)+x)/(2*x0);
-        printf("%.3f\n",expressao);
-        return(x,expressao,e);
+        return raiz(x,expressao,e);
     }
 }
 
 
 int main(){
     printf("#####\n");
-    printf("%.3f",raiz(13,3.5,0.001));
+    printf("A raiz eh %.3f",raiz(13,7,0.001));
     printf("\n#####\n");
     return 0;
 }
