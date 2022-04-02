@@ -12,6 +12,14 @@ int **alocarMatriz(int linhas, int colunas){
 	return matrix;
 }
 
+void desalocarMatriz(int** matriz){
+    int i=0;
+    for(i=0;i<TAM;i++){
+        free(matriz[i]);
+    }
+    free(matriz);
+}
+
 void exibeMatrizComum(int mat[TAM][TAM]){
     printf("\n");
     int i,j;
@@ -88,5 +96,6 @@ int main(){
     matrix = multiplicaMatrizes(mat1,mat2);
     printf("\nMultiplicacao:");
     exibeMatrizRef(matrix);
+    desalocarMatriz(matrix);
     return 0;
 }
