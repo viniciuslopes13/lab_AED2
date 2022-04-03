@@ -37,38 +37,76 @@ void exibeMatriz(int **mat, int lin, int col){
 }
 
 void lerArquivo(FILE *arq, int **mat,int lin, int col){
-    for(int i=0;i<lin;i++){
-        for(int j=0;j<col;j++){
+    int i,j;
+    for(i=0;i<lin;i++){
+        for(j=0;j<col;j++){
             fscanf(arq,"%d", &mat[i][j]);
         }
     }
 }
 
+void escreveArquivo(FILE *arq, int **mat, int lin, int col){
+    int i,j;
+    for(i=0;i<lin;i++){
+        for(j=0;j<col;j++){
+            fprintf(arq,"%d ", mat[i][j]);
+        }
+        fprintf(arq,"\n");
+    }
+}
+
 void analiseOpcao(char op){
+    
+    char nome[50];
+    int lin,col,i,j;
+    FILE *arq;
+    int **mat;
+    
     switch (op){
     case 'S':
         printf("Programa Finalizado!");
         exit(0);
-    case 'L': ;
-        char nome[50];
-        int lin,col;
-        int **mat = alocarMatriz(3,3);
+    case 'L':
         printf("\nInforme o nome do arquivo (nome e extensao): ");
         scanf("%s",nome);
         printf("Informe o numerdo de linhas e colunas: ");
         scanf("%d %d",&lin,&col);
-        FILE *arq = fopen(nome,"r");
+        mat = alocarMatriz(lin,col);
+        arq = fopen(nome,"r");
         if (arq == NULL)
         {
             printf("Erro ao tentar abrir o arquivo!\n");
-            exit(0);
+            escolhaMenu();
         }
         lerArquivo(arq,mat,lin,col);
         exibeMatriz(mat,lin,col);
         desalocarMatriz(mat,lin);
         fclose(arq);
-        break;
+        system("pause");
+        system("cls");
+        escolhaMenu();
     case 'G':
+        printf("\nInforme o nome do arquivo (nome e extensao): ");
+        scanf("%s",nome);
+        printf("Informe o numerdo de linhas e colunas: ");
+        scanf("%d %d",&lin,&col);
+        mat = alocarMatriz(lin,col);
+        arq = fopen(nome,"w");
+        if (arq==NULL) {
+            printf("Falha ao criar o arquivo.");
+            escolhaMenu();
+	    }
+        for(i=0;i<lin;i++){
+            for(j=0;j<col;j++){
+                scanf("%d",&mat[i][j]);
+            }
+        }
+        escreveArquivo(arq,mat,lin,col);
+        fclose(arq);
+        desalocarMatriz(mat,lin);
+        system("pause");
+        system("cls");
+        escolhaMenu();
         break;
     default:
         printf("\nOPCAO INVALIDA! ESCOLHA NOVAMENTE UMA OPCAO VALIDA.\n");
