@@ -24,9 +24,10 @@ void intercala(int e, int m, int d, char** v){
     for(j=0;j<n2;j++){
         strcpy(D[j],v[m+1+j]);
     }
-    i=0, j=0;
+    i=0;
+    j=0;
     while(i<n1 && j<n2){
-        if(strcmp(E[j],D[j])<0){
+        if(strcmp(E[i],D[j])<0){
             strcpy(v[k],E[i]);
             i++;
         }else{
@@ -73,7 +74,6 @@ int main(){
         scanf("%s",nomes[i]);
     }
 
-    //intercala(0,n/2,n-1,nomes);
     mergeSort(0,n-1,nomes);
     
     printf("\n##### Vetor em ordem #####\n");
