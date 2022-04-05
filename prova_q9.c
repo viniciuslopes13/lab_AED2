@@ -35,8 +35,7 @@ int main(){
     gets(palavra);
     int tam = strlen(palavra);
     int k=0; 
-	int i=0; 
-	int j=0;
+	int i=0;
     while(i<(tam/2)){
         push(&p,palavra[i]);
         i++;
