@@ -18,7 +18,8 @@ void menu(){
     printf("1 - inserir\n");
     printf("2 - retira\n");
     printf("3 - imprime fila\n");
-    printf("4 - sair\n");
+    printf("4 - liberar fila\n");
+    printf("5 - sair\n");
     printf("=========================\n");
 }
 
@@ -72,12 +73,18 @@ void fila_imprime(Fila *f){
     printf("### FIM FILA ###\n\n");
 }
 
+void fila_libera(Fila *f){
+    while(fila_vazia(f)==0){
+        fila_retira(f);
+    }
+}
+
 int main(){
     int op;
     Fila *fila = fila_cria();
     menu();
     scanf("%d",&op);
-    while (op!=4){
+    while (op!=5){
         if(op==1){
             float valor;
             printf("Informe um numero: ");
@@ -93,6 +100,10 @@ int main(){
         }
         if(op==3){
             fila_imprime(fila);
+        }
+        if(op==4){
+            fila_libera(fila);
+            printf("\nFila liberada\n\n");
         }
         menu();
         scanf("%d",&op);
