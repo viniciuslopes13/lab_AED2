@@ -12,24 +12,49 @@ typedef struct{
     No* topo;
 } Pilha;
 
+void push(Pilha *pilha, char d){
+    No * novo = (No*) malloc(sizeof(No));
+    novo->caracter = d;
+    novo->prox = pilha->topo;
+    pilha->topo = novo;
+}
+
+char pop(Pilha *pilha){
+    char c = pilha->topo->caracter;
+    //No * pi = pilha->topo;
+    pilha->topo = pilha->topo->prox;
+    //free(pi);
+    return c;
+}
+
 int main(){
-    int tam;
     char palavra[100];
+    Pilha p;
+    p.topo = NULL;
     printf("Digite uma palavra: ");
     gets(palavra);
-    tam = strlen(palavra);
-    printf("Tamanho = %d",tam);
-    int k=0;
-    int i=0;
-    while(i<(int)(tam/2)){
-        push(palavra[i]);
+    int tam = strlen(palavra);
+    int k=0; 
+	int i=0; 
+	int j=0;
+    while(i<(tam/2)){
+        push(&p,palavra[i]);
         i++;
     }
-    int temp = tam;
+    if(tam%2!=0){
+    	i++;
+	}
     while(i<tam){
-        if(pop(pilha)!=palavra[temp-1]) k=1;
-        temp--;
+        if(pop(&p)!=palavra[i]){
+        	k=1;
+        	break;
+		};
         i++;
+    }
+    if(k==1){
+        printf("\nNao eh palindromo!\n");
+    }else{
+        printf("\nEh palindromo!\n");
     }
     return 0;
 }
