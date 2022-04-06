@@ -65,8 +65,10 @@ void escreveArquivo(FILE *arq, int **mat, int lin, int col){
     }
 }
 
-/*Controller da aplicação; onde ocorre o direcionamento da aplicação, de acordo com os dados inseridos
-pelo usuário*/
+/*
+    Controller da aplicação; onde ocorre o direcionamento da aplicação, de acordo com os dados inseridos
+    pelo usuário
+*/
 void analiseOpcao(char op){
     
     char nome[50];
