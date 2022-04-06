@@ -1,7 +1,12 @@
+/*
+Aluno: Francisco Vinícius Lopes Costa
+Matrícula: 2021022958
+*/
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 
+/*Função que retorna um ponteiro para uma matriz alocada dinamicamente*/
 char **alocaNomes(int n){
 	char **nomes = (char **) malloc(n*sizeof(char *));
 	int i;

@@ -1,17 +1,24 @@
+/*
+Aluno: Francisco Vinícius Lopes Costa
+Matrícula: 2021022958
+*/
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 
+/*cria estrutura do tipo No*/
 typedef struct no No;
 struct no{
     char caracter;
     No* prox;
 };
 
+/*cria estrutura do tipo Pilha*/
 typedef struct{
     No* topo;
 } Pilha;
 
+/*função para empilhar*/
 void push(Pilha *pilha, char d){
     No * novo = (No*) malloc(sizeof(No));
     novo->caracter = d;
@@ -19,6 +26,7 @@ void push(Pilha *pilha, char d){
     pilha->topo = novo;
 }
 
+/*funcao para remover da pilha*/
 char pop(Pilha *pilha){
     char c = pilha->topo->caracter;
     //No * pi = pilha->topo;

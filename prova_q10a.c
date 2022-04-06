@@ -1,14 +1,21 @@
+/*
+Aluno: Francisco Vinícius Lopes Costa
+Matrícula: 2021022958
+*/
 #include<stdio.h>
 #include<stdlib.h>
 
+/*Define o tamanho do vetor*/
 #define N 10
 
+/*Cria estrutura do tipo Fila*/
 typedef struct fila Fila;
 struct fila{
     float dados[N];
     int fim;
 };
 
+/*Inicializa fila*/
 void inicializaFila(Fila *f){
     int i;
     for(i=0;i<N;i++){
@@ -17,6 +24,7 @@ void inicializaFila(Fila *f){
     f->fim = 0;
 }
 
+/*Insere elemento na fila*/
 void fila_insere(Fila *f, float v){
     if(f->fim == N){
         printf("Fila esta cheia.\n");
@@ -27,6 +35,7 @@ void fila_insere(Fila *f, float v){
     }
 }
 
+/*Retira elemento da fila*/
 float fila_retira(Fila *f){
     int i;
     float dado;
@@ -42,11 +51,13 @@ float fila_retira(Fila *f){
     return;
 }
 
+/*Verifica se a fila é vazia*/
 int fila_vazia(Fila *f){
    if(f->fim==0) return 1;
    return 0;
 }
 
+/*Imprime em tela todos os elementos da fila*/
 void fila_imprime(Fila *f){
     int i;
     printf("\nImprimindo a fila:\n");
