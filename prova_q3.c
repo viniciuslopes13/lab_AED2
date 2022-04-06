@@ -20,6 +20,9 @@ typedef struct {
 
 /*Calcula a area de um retangulo*/
 float areaRetangulo(retangulo ret){
+    /*
+        A partir dos dois pontos inciais que definem o retângulo, pode-se tirar os outros dois.    
+    */
     ponto pse = {ret.pie.x, ret.psd.y};
     ponto pid = {ret.psd.x, ret.pie.y};
     float area = (pse.y - ret.pie.y) * (ret.psd.x - pse.x);
@@ -28,12 +31,24 @@ float areaRetangulo(retangulo ret){
 
 /*Verifica se um ponto está contido num retânguo*/
 int interiroRetangulo(retangulo r, ponto p){
+    /*
+        Para verificar se um ponto está contido no retângulo, verifica-se se a coordenada x do ponto é maior
+        que a coordenada x do ponto inferior esquerdo e menor que a coordenada x do ponto superior direito; 
+        e verifica-se se a coordenada y do ponto é maior que a coordenada y do ponto inferior esquerdo e 
+        também se é menor que a coordenada y do ponto superior direito. 
+    */
     if((p.x>=r.pie.x) && (p.x<=r.psd.x) && (p.y>=r.pie.y) && (p.y<=r.psd.y)) return 1;
     return 0;
 }
 
 /*Verifica se um retângulo está contido noutro retânguo*/
 int retanguloContido(retangulo r1, retangulo r2){
+    /*
+        pie (ponto inferior esquerdo)
+        psd (ponto superior direito)
+        Essa verificação pode ser feita utilizando a função anterior. Basta ver se o pie e pse, que definem um
+        retangulo, estão contido dentro de outro retangulo.
+    */
     if((interiroRetangulo(r2,r1.pie)) && (interiroRetangulo(r2,r1.psd))) return 1;
     return 0;
 }
