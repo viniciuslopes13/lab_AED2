@@ -1,7 +1,12 @@
+/*
+Aluno: Francisco Vinícius Lopes Costa
+Matrícula: 2021022958
+*/
 #include<stdlib.h>
 #include<stdio.h>
 #include<string.h>
 
+/*Função que retorna um ponteiro para uma matriz alocada dinamicamente*/
 int **alocarMatriz(int linhas, int colunas){
 	int **matrix = (int **) malloc(linhas*sizeof(int *));
 	int i;
@@ -11,6 +16,7 @@ int **alocarMatriz(int linhas, int colunas){
 	return matrix;
 }
 
+/*Função que libera espaço de matriz alocada dinamicamente*/
 void desalocarMatriz(int** matriz, int lin){
     int i=0;
     for(i=0;i<lin;i++){
@@ -19,6 +25,7 @@ void desalocarMatriz(int** matriz, int lin){
     free(matriz);
 }
 
+/*Exibe menu em  tela*/
 void escolhaMenu(){
     char opcao;
     printf("\nEscolha uma opcao (S,L,G): ");
@@ -26,6 +33,7 @@ void escolhaMenu(){
     analiseOpcao(opcao);
 }
 
+/*Função responsável por exibir matriz em tela, recebendo como parâmetro o ponteiro da matriz e quantidade de linhas e colunas*/
 void exibeMatriz(int **mat, int lin, int col){
 	int i,j;
 	for(i=0;i<lin;i++){
@@ -36,6 +44,7 @@ void exibeMatriz(int **mat, int lin, int col){
     }
 }
 
+/*Ler arquivo*/
 void lerArquivo(FILE *arq, int **mat,int lin, int col){
     int i,j;
     for(i=0;i<lin;i++){
@@ -45,6 +54,7 @@ void lerArquivo(FILE *arq, int **mat,int lin, int col){
     }
 }
 
+/*Escreve em um arquivo*/
 void escreveArquivo(FILE *arq, int **mat, int lin, int col){
     int i,j;
     for(i=0;i<lin;i++){
@@ -55,6 +65,8 @@ void escreveArquivo(FILE *arq, int **mat, int lin, int col){
     }
 }
 
+/*Controller da aplicação; onde ocorre o direcionamento da aplicação, de acordo com os dados inseridos
+pelo usuário*/
 void analiseOpcao(char op){
     
     char nome[50];

@@ -1,17 +1,24 @@
+/*
+Aluno: Francisco Vinícius Lopes Costa
+Matrícula: 2021022958
+*/
 #include<stdlib.h>
 #include<stdio.h>
 #include<math.h>
 
+/*Cria estrutura ponto*/
 typedef struct {
     int x;
     int y;
 } ponto;
 
+/*Cria estrutura retangulo*/
 typedef struct {
     ponto pie;
     ponto psd;
 } retangulo;
 
+/*Calcula a area de um retangulo*/
 float areaRetangulo(retangulo ret){
     ponto pse = {ret.pie.x, ret.psd.y};
     ponto pid = {ret.psd.x, ret.pie.y};
@@ -19,11 +26,13 @@ float areaRetangulo(retangulo ret){
     return area;
 }
 
+/*Verifica se um ponto está contido num retânguo*/
 int interiroRetangulo(retangulo r, ponto p){
     if((p.x>=r.pie.x) && (p.x<=r.psd.x) && (p.y>=r.pie.y) && (p.y<=r.psd.y)) return 1;
     return 0;
 }
 
+/*Verifica se um retângulo está contido noutro retânguo*/
 int retanguloContido(retangulo r1, retangulo r2){
     if((interiroRetangulo(r2,r1.pie)) && (interiroRetangulo(r2,r1.psd))) return 1;
     return 0;

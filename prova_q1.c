@@ -1,8 +1,14 @@
+/*
+Aluno: Francisco Vinícius Lopes Costa
+Matrícula: 2021022958
+*/
 #include<stdio.h>
 #include<stdlib.h>
 
+/*Define o tamanho da matriz*/
 #define TAM 2
 
+/*Função que retorna um ponteiro para uma matriz alocada dinamicamente*/
 int **alocarMatriz(int linhas, int colunas){
 	int **matrix = (int **) malloc(linhas*sizeof(int *));
 	int i;
@@ -12,6 +18,7 @@ int **alocarMatriz(int linhas, int colunas){
 	return matrix;
 }
 
+/*Função que libera espaço de matriz alocada dinamicamente*/
 void desalocarMatriz(int** matriz){
     int i=0;
     for(i=0;i<TAM;i++){
@@ -20,6 +27,7 @@ void desalocarMatriz(int** matriz){
     free(matriz);
 }
 
+/*Função responsável por exibir matriz em tela, recebendo como parâmetro a matriz em si*/
 void exibeMatrizComum(int mat[TAM][TAM]){
     printf("\n");
     int i,j;
@@ -31,6 +39,7 @@ void exibeMatrizComum(int mat[TAM][TAM]){
     }
 }
 
+/*Função responsável por exibir matriz em tela, recebendo como parâmetro o ponteiro da matriz*/
 void exibeMatrizRef(int ** mat){
     printf("\n");
     int i,j;
@@ -43,6 +52,7 @@ void exibeMatrizRef(int ** mat){
 
 }
 
+/*Realiza a soma dos elementos de duas matrizes*/
 int** somaMatrizes(int mat1[TAM][TAM], int mat2[TAM][TAM]){
     int** mat = alocarMatriz(TAM,TAM);
     int i,j;
@@ -54,6 +64,7 @@ int** somaMatrizes(int mat1[TAM][TAM], int mat2[TAM][TAM]){
     return mat;
 }
 
+/*Realiza a subtração dos elementos de duas matrizes*/
 int** subtraiMatrizes(int mat1[TAM][TAM], int mat2[TAM][TAM]){
     int** mat = alocarMatriz(TAM,TAM);
     int i,j;
@@ -65,6 +76,7 @@ int** subtraiMatrizes(int mat1[TAM][TAM], int mat2[TAM][TAM]){
     return mat;
 }
 
+/*Realiza a multiplicação dos elementos de duas matrizes*/
 int** multiplicaMatrizes(int mat1[TAM][TAM], int mat2[TAM][TAM]){
 	int** mat = alocarMatriz(TAM,TAM);
     int lin,col,k,somaprod;

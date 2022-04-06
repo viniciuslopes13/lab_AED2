@@ -1,17 +1,27 @@
+/*
+Aluno: Francisco Vinícius Lopes Costa
+Matrícula: 2021022958
+*/
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 
+/*Cria estrutura Aluno*/
 typedef struct aluno Aluno;
 struct aluno {
     char nome[81];
     float nota;
 };
 
+/*Recebe um ponteiro para um vetor de alunos e a quantidade de alunos, e exibe em ordem alfabética*/
 void ordem_alfabetica (int n, Aluno* v){
     int i,j;
     for(i=0;i<n-1;i++){
         for(j=0;j<n-1;j++){
+            /*A funcão strcmp(string1,string2) compara duas strings; 
+             - caso a primeira seja menor (alfabeticamente) que a segunda, a função restorna -1; 
+             - se as strings são iguais o retorno é 0; e 
+             - se a primeira é maior que a segunda o retorno é 1*/
             if(strcmp(v[j].nome, v[j+1].nome)>0){
                 Aluno temp = v[j];
                 v[j] = v[j+1];
@@ -25,6 +35,9 @@ void ordem_alfabetica (int n, Aluno* v){
     }
 }
 
+/*Função que retorna um aluno buscado pelo nome, caso esteja presente no vetor de alunos
+passado como parâmetro.
+*/
 Aluno busca (int n, Aluno* v, char* nome){
     Aluno a = {" ",0};
     int i=0;

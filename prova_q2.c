@@ -1,17 +1,24 @@
+/*
+Aluno: Francisco Vinícius Lopes Costa
+Matrícula: 2021022958
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include <math.h>
 
-
+/*Cria estrutura ponto*/
 struct ponto {
     int x;
     int y;
 };
 
+/*Calcula distância entre dois pontos*/
 float calculaDistancia(int x1, int y1, int x2, int y2) {
     return sqrt( pow(x2-x1,2) + pow(y2-y1, 2) );
 }
 
+/*Recebe um vetor de pontos e informa os pontos mais distantes do vetor.*/
 void pontosDistantes(struct ponto *pts, int n){
     float distMax = 0;
     float dist;
