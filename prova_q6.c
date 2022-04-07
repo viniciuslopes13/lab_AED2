@@ -19,7 +19,14 @@ char **alocaNomes(int n){
 /*ordena o vero de nomer em ordem alfabética*/
 void ordenarInsercao(char** nomes, int n){
     int i,j;
+    /*Cria vetor para armazenar dado temporariamente nas comparações.*/
     char* x = (char*)malloc(50*sizeof(char));
+    /*
+        A ordenação acontece sempre tentando inserir o elemento a uma posição sua mais a esquerda. Por exemplo,
+        quando i=1, o algoritmo vai comparar se o valor da posicao 1 é menor que o da posião 0, se sim, 
+        os valores são trocados. Quando i=2, o valor dessa posicao é comparado com os das posições 0 e 1, e assim
+        por diante.
+    */
     for(i=1;i<n;i++){
         strcpy(x,nomes[i]);
         for(j=i-1;j>=0 && strcmp(x,nomes[j])<0;j--){
