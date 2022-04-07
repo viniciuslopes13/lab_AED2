@@ -16,6 +16,10 @@ struct aluno {
 /*Recebe um ponteiro para um vetor de alunos e a quantidade de alunos, e exibe em ordem alfabética*/
 void ordem_alfabetica (int n, Aluno* v){
     int i,j;
+    /*
+        O laço mais interno permite que cada elemento seja comparado com todos os outros do vetor
+        até encontrar um elemento que seja igual ou maior.
+    */
     for(i=0;i<n-1;i++){
         for(j=0;j<n-1;j++){
             /*A funcão strcmp(string1,string2) compara duas strings; 
@@ -35,8 +39,9 @@ void ordem_alfabetica (int n, Aluno* v){
     }
 }
 
-/*Função que retorna um aluno buscado pelo nome, caso esteja presente no vetor de alunos
-passado como parâmetro.
+/*
+    Função que retorna um aluno buscado pelo nome, caso esteja presente no vetor de alunos
+    passado como parâmetro.
 */
 Aluno busca (int n, Aluno* v, char* nome){
     Aluno a = {" ",0};
@@ -44,12 +49,26 @@ Aluno busca (int n, Aluno* v, char* nome){
     int f = n-1;
     while (i<=f){
         int meio = (i+f)/2;
+        /*Verifica se o aluno do nome do vetor é igual, maior ou menor que a palavra buscada.*/
         int teste = strcmp(v[meio].nome,nome);
         if(teste==0){
+            /*
+                Se o resultado do teste for igual zero, significa que a palavra buscada é o nome
+                do aluno que está no meio do vetor.
+            */
             return v[meio];
         }else if(teste<0){
+            /*
+                Se o resultado do teste for -1, significa que a palavra buscada está entre o meio do
+                vetor e o final, pois a palavra é maior (alfabeticamente) do que a nome do aluno que está no meio
+                do vetor.
+            */
             i = meio+1;
         }else{
+            /*
+                Se teste=1, significa que o nome do aluno que está no meio do vetor é maior que a palavra buscada,
+                logo a palavra buscada está entre o inicio e o meio do vetor.
+            */
             f = meio-1;
         }
     }
